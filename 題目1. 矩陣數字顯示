@@ -1,0 +1,120 @@
+#include<stdio.h>  
+#include<string.h>  
+void top(char map[][23], int num){  
+    for (int i = num * 6; i < num * 6 + 5; i++)  
+        map[0][i] = '1';  
+}  
+void bottom(char map[][23], int num){  
+    for (int i = num * 6; i < num * 6 + 5; i++)  
+        map[4][i] = '1';  
+}  
+void mid(char map[][23], int num){  
+    for (int i = num * 6; i < num * 6 + 5; i++)  
+        map[2][i] = '1';  
+}  
+void upper_left(char map[][23], int num){  
+    for (int i = 0; i < 3; i++)  
+        map[i][num*6] = '1';  
+}  
+void lower_left(char map[][23], int num){  
+    for (int i = 2; i < 5; i++)  
+        map[i][num*6] = '1';  
+}  
+void upper_right(char map[][23], int num){  
+    for (int i = 0; i < 3; i++)  
+        map[i][num*6+4] = '1';     
+}  
+void lower_right(char map[][23], int num){  
+    for (int i = 2; i < 5; i++)  
+        map[i][num*6+4] = '1';      
+}  
+  
+int main(){  
+    char map[5][23],word;  
+    memset(map, 0, sizeof(map));  
+    for (int num = 0; num < 4; num++)  
+    {  
+        word = getchar();  
+        switch(word){  
+            case '0':  
+                top(map, num);  
+                bottom(map, num);  
+                upper_left(map, num);  
+                lower_left(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '1':  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '2':  
+                top(map, num);  
+                mid(map, num);  
+                bottom(map, num);  
+                upper_right(map, num);  
+                lower_left(map, num);  
+                break;  
+            case '3':   
+                top(map, num);  
+                mid(map, num);  
+                bottom(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '4':  
+                upper_left(map, num);  
+                mid(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '5':  
+                top(map, num);  
+                mid(map, num);  
+                bottom(map, num);  
+                upper_left(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '6':  
+                top(map, num);  
+                mid(map, num);  
+                bottom(map, num);  
+                upper_left(map, num);  
+                lower_left(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '7':   
+                top(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '8':   
+                top(map, num);  
+                mid(map, num);  
+                bottom(map, num);  
+                upper_left(map, num);  
+                lower_left(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+            case '9':   
+                top(map, num);  
+                mid(map, num);  
+                upper_left(map, num);  
+                upper_right(map, num);  
+                lower_right(map, num);  
+                break;  
+        }  
+    }  
+    for (int row = 0; row < 5; row++){  
+        for (int col = 0; col < 23; col++){  
+            if(map[row][col]=='1'){  
+                printf("*");  
+            }  
+            else{  
+                printf(" ");  
+            }  
+        }  
+        printf("\n");  
+    }  
+}  
