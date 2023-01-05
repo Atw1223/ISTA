@@ -1,0 +1,12 @@
+#include<stdio.h>  
+  
+int main(){  
+    int n;  
+    float m;  
+    while(scanf("%d", &n)!=EOF){  
+            m = 1.6 * n;  
+    printf("%.1f\n", m);  
+  
+    }  
+  
+} 
